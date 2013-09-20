@@ -1,6 +1,6 @@
 A simple HTML / Javascript text game engine
 
-Adventure Engine v0.5 Andrzej marczewski 2013
+Adventure Engine v0.5 Andrzej marczewski September 2013
 
 [[link text="XYZ" goto="SCENE-ID" script="Optional" class="Optional"]]
 
