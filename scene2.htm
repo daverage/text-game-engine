@@ -1,0 +1,50 @@
+<div class="scene">						
+	<div id="s2start" class="act">
+		[[function $('#player').css('background-image','')]]
+		[[setVar name="scene2end" value="0"]]
+		<h2>Scene 2</h2>
+		<p>You see a person standing ahead of you.</p>
+		<p style="text-align:center">
+			[[link text="Shoot Them" goto="s2ending" script="setVar('scene2end',1)" class="option"]]
+			[[link text="Do Nothing" goto="s2part2" class="option"]]
+		</p>
+	</div>
+	
+	<div id="s2part2" class="act">
+		<h2>Scene 2</h2>
+		<p>The person starts running towards you.</p>
+		<p style="text-align:center">
+			[[link text="Shoot Them" goto="s2ending" script="setVar('scene2end',2)" class="option"]]
+			[[link text="Do Nothing" goto="s2part3" class="option"]]
+		</p>
+	</div>
+	
+	<div id="s2part3" class="act">
+		<h2>Scene 2</h2>
+		<p>The person stretches out their arms towards you as they run faster.</p>
+		<p style="text-align:center">
+			[[link text="Shoot Them" goto="s2ending" script="setVar('scene2end',3)" class="option"]]
+			[[link text="Do Nothing" goto="s2ending" class="option"]]
+		</p>
+	</div>
+	
+	<div id="s2ending" class="act">
+		[[function $('#player').css('background-image','url(images/moscow.jpg)')]]
+		<h2>Scene 2: The Full Story</h2>
+		<p>You are a secret agent hunting an infamous enemy spy. They have stolen documents that threaten the security of the nation and you have to stop them, whatever it takes. </p>
+		[[function if(getVar('scene2end')=='1'){$('#scene2ending1option1').show()};]]
+		[[function if(getVar('scene2end')=='2'){$('#scene2ending1option2').show()};]]
+		[[function if(getVar('scene2end')=='3'){$('#scene2ending1option3').show()};]]
+		[[function if(getVar('scene2end')=='0'){$('#scene2ending1option4').show()};]]
+		[[redirect scene="start" wait="5"]]
+		<p id="scene2ending1option1" style="display:none;">You spot them ahead and with perfect aim you shoot them before they get a chance to spot you.</p>
+		<p id="scene2ending1option2" style="display:none;">You spot them ahead of you and pray that they have not seen you. As they begin to run towards you, you realise you have no choice - they have made you and are going to kill you. Instinctively you shoot them down as they run.</p>
+		<p id="scene2ending1option3" style="display:none;">You spot them ahead of you and pray that they have not seen you. As they begin to run towards you, you realise you have no choice - they have made you and are going to kill you. As they stretch out their arms, you see the distinctive glint of a knife. Instinctively you shoot them down before they have a chance to use it.</p>
+		<p id="scene2ending1option4" style="display:none;">You spot them ahead of you and pray that they have not seen you. As they begin to run towards you, you realise you have no choice - they have made you and are going to kill you. As they stretch out their arms, you see the distinctive glint of a knife. Before you can react, they are on you. Your last thought is of your best friend.</p>
+		<p style="text-align:center">
+			[[link text="Start Scene 3" goto="s3start" class="option"]]
+			[[redirect scene="s3start" wait="15"]]
+		</p>
+		
+	</div>
+</div>	

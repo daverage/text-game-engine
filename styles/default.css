@@ -1,0 +1,118 @@
+*{
+	font-family:tahoma,verdana;
+
+}
+img{
+	border:0;
+}
+body{
+	color:white;
+	background-color:black;
+}
+#scenes div{
+	display:none;
+}
+#content{
+	margin:10px auto;
+	width:580px;
+	padding:10px;
+	color:black;
+	background-color:black;
+	font-size:20px!important;
+}
+	#shareBarTop{
+		display:none;
+	}
+	#shareBarSide{
+		display:block;
+	}
+
+
+#content a{
+	color:blue;
+	font-weight:bold;
+	text-decoration:underline;
+}
+#content a:hover{
+	color:red;
+	text-decoration:underline;
+}
+.options{
+	text-align:center;
+	padding:10px;
+}
+.option{
+	padding:5px;
+}
+a.button{
+	padding:5px;
+	margin:5px;
+	border-top:1px solid grey;
+	border-right:1px solid grey;
+	border-left:1px solid white;
+	border-bottom:1px solid white;	
+	text-align:center;
+	float:left;
+	display:block;
+	min-width:30%;
+	background-color:#666;
+	text-decoration: none!important;
+}
+a.button:hover{
+	border-top:1px solid white;
+	border-right:1px solid white;
+	border-left:1px solid grey;
+	border-bottom:1px solid grey;	
+
+}
+br{
+	clear:both;
+	display:block;
+	padding:10px;
+}
+#timer{
+	border-top:3px solid white;
+	width:0px;
+	bottom:0px;
+}
+.act{
+	background-image:url(../images/trans1.png);
+	padding:10px;
+	height:580px;
+}
+
+#player{
+	height:600px;
+	background-repeat:no-repeat;
+}
+@media only screen and (max-device-width: 480px) {
+	#shareBarTop{
+		display:block;
+		margin-bottom:5px;
+		border:1px solid black;
+		background-color:white;
+	}
+	#shareBarSide{
+		display:none;
+	}
+	#content{
+		width:100%;
+		margin:0px;
+		padding:0px;
+		font-size:16px!important;
+	}
+	#player{
+		height:100%;
+		margin:0px;
+		width:100%;
+		padding:0px;
+	}
+
+}
+/*the load save box*/
+#dialog-confirm, .ui-button-text,.ui-dialog-title{
+	font-size: 80%;
+}
+.ui-dialog-titlebar-close {
+  display: none;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+
+	<title>The Context Game</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="scripts/jquery.cookie.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+
+	<script src="scripts/engine.js?v=6.1"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="styles/default.css?v=7"/>
+	<meta name="viewport" content="width=device-width">
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header"></div>
+			<div id="content">
+			<div id="loading" style="color:white;"><img src="images/pacman-loader-white.gif"> Loading...</div>
+				<!-- AddThis Button BEGIN -->
+				<div id="shareBarTop" class="addthis_toolbox addthis_default_style addthis_32x32_style">
+				<a class="addthis_button_yammer"></a>
+				<a class="addthis_button_facebook"></a>
+				<a class="addthis_button_twitter"></a>
+				<a class="addthis_button_pinterest_share"></a>
+				<a class="addthis_button_google_plusone_share"></a>
+				<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+				</div>
+				<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51921808707e9db6"></script>
+				<!-- AddThis Button END -->
+				<div id="timer"></div>
+				
+				<div id="player"></div>
+				<div id="scenes">
+				[[preload "scene2.htm","scene3.htm"]]
+				<!--scenes start-->
+					<div class="scene">
+						<div id="start" class="act">
+							[[function $('#player').css('background-image','')]]
+							<h2>Welcome</h2>
+							<p>Make choices based on what you know...</p>
+							<p style="text-align:center">
+								[[link text="Begin" goto="s1start" class="option"]]
+							</p>
+							
+							
+						</div>
+					</div>
+					<div class="scene">
+						<div id="s1start" class="act">
+							[[setVar name="scene1end" value="0"]]
+							<h2>Scene 1</h2>
+							<p>You see a person standing ahead of you.</p>
+							<p style="text-align:center">
+								[[link text="Shoot Them" goto="s1ending" script="setVar('scene1end',1)" class="option"]]
+								[[link text="Do Nothing" goto="s1part2" class="option"]]
+							</p>
+						</div>
+						
+						<div id="s1part2" class="act">
+							<h2>Scene 1</h2>
+							<p>The person starts running towards you.</p>
+							<p style="text-align:center">
+								[[link text="Shoot Them" goto="s1ending" script="setVar('scene1end',2)" class="option"]]
+								[[link text="Do Nothing" goto="s1part3" class="option"]]
+							</p>
+						</div>
+						
+						<div id="s1part3" class="act">
+							<h2>Scene 1</h2>
+							<p>The person stretches out their arms towards you as they run faster.</p>
+						
+							<p style="text-align:center">
+								[[link text="Shoot Them" goto="s1ending" script="setVar('scene1end',2)" class="option"]]
+								[[link text="Do Nothing" goto="s1ending" class="option"]]
+							</p>
+							
+						</div>
+						
+						<div id="s1ending" class="act">
+							[[function $('#player').css('background-image','url(images/trainstation.jpg)')]]
+							<h2>Scene 1: The Full Story</h2>
+							<p>You have been really looking forward to today, finally your best friend is coming to stay after 10 years away. You have agreed to pick them up from the train station.</p>
+							[[function if(getVar('scene1end')=='1'){$('#scene1ending1option1').show()};]]
+							[[function if(getVar('scene1end')=='2'){$('#scene1ending1option2').show()};]]
+							[[function if(getVar('scene1end')=='3'){$('#scene1ending1option3').show()};]]
+							[[function if(getVar('scene1end')=='0'){$('#scene1ending1option4').show()};]]
+							<p id="scene1ending1option1" style="display:none;">Who could have predicted that after all this time, your first instinct upon seeing them would be to shoot them dead?</p>
+							<p id="scene1ending1option2" style="display:none;">Your best friend sees you and begins to run towards you. Imagine their surprise when you pull a gun on them and shoot them down as they run!</p>
+							<p id="scene1ending1option3" style="display:none;">Your best friend sees you and begins to run towards you. They open their arms ready to grab you in a warm embrace. Sadly, they could not have predicted that you would shoot them without warning.</p>
+							<p id="scene1ending1option4" style="display:none;">Your best friend sees you and begins to run towards you. They open their arms ready to grab you in a warm embrace. Finally they reach you and the years that you have been apart just drift away.</p>
+							<p style="text-align:center">
+								[[link text="Start Scene 2" goto="s2start" class="option"]]
+								[[redirect scene="s2start" wait="15"]]
+							</p>
+						</div>
+						
+					</div>
+				
+					<div class="scene">
+						<div id="s3start" class="act">
+							[[function $('#player').css('background-image','')]]
+							[[setVar name="scene3end" value="0"]]
+							<h2>Scene 3</h2>
+							<p>You are standing alone in strange looking world. You see a turtle ahead.</p>
+							<p style="text-align:center">
+								[[link text="Jump on it" goto="s3ending" script="setVar('scene3end',1)" class="option"]]
+								[[link text="Do nothing" goto="s3ending" script="setVar('scene3end',2)" class="option"]]
+							</p>
+						</div>
+				<!--scenes end-->
+				</div>
+			</div>
+			<div id="footer"><p style="font-size:10px; text-align:left;">v0.4 build with my adventure engine v0.5 | Cookies are used to save progress</p></div>
+<!-- AddThis Button BEGIN -->
+<div id="shareBarSide" class="addthis_toolbox addthis_floating_style addthis_32x32_style" style="padding:15px;left:50px;top:150px;border:1px solid black;padding:5px;text-align:center;">
+
+<a class="addthis_button_yammer"></a>
+<a class="addthis_button_facebook"></a>
+<a class="addthis_button_twitter"></a>
+<a class="addthis_button_pinterest_share"></a>
+<a class="addthis_button_google_plusone_share"></a>
+<a class="addthis_button_preferred_4"></a>
+<a class="addthis_button_compact"></a>
+</div>
+<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51921808707e9db6"></script>
+<!-- AddThis Button END -->
+
+		</div>
+	</body>
+</html>
+
